@@ -49,3 +49,9 @@ B8EB32F8 8D415F8E F16FE657 A35381CC
 
 —— END LICENSE ——
 --------------------- 
+
+Note 5:sublime text3(SublimeRepl)
+Q:Sublime Text FileNotFoundError(2, '系统找不到指定的文件。', None, 2)
+A:
+SublimeRepl的Settings-User
+{ "default_extend_env": {"PATH":"C:\\Program Files (x86)\\Python 3.5"}, }
