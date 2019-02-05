@@ -1,3 +1,5 @@
-def greet(name):
-	print("Hello,"+name+".Good morning!")
-greet('he')
+def greet(i):
+	for j in range(1,i):
+		print(i,j,sep=' ')
+
+greet(3)

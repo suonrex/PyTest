@@ -1,0 +1,52 @@
+func1:print()
+ ★print(*objects, sep=' ', end='\n', file=sys.stdout)
+ objects -- 复数，表示可以一次输出多个对象。输出多个对象时，需要用 , 分隔。
+ sep -- 用来间隔多个对象，默认值是一个空格。
+ end -- 用来设定以什么结尾。默认值是换行符 \n，我们可以换成其他字符串。
+ file -- 要写入的文件对象。
+
+ 逗号分隔 => a(space)b
+ 加号分隔 => ab
+
+func2:range()
+★range([start,] stop [, step]) -> range object
+	Example 1:
+	>>> 
+	>>> range(5)
+	range(0, 5)
+	>>> 
+	>>> list(range(5)) # list() call is not required in Python 2
+	[0, 1, 2, 3, 4]
+	>>> 
+
+	Example 2:
+	>>>
+	>>> range(5, 10)
+	range(5, 10)
+	>>> 
+	>>> list(range(5, 10))
+	[5, 6, 7, 8, 9]
+	>>> 
+
+	Example 3:
+	>>> 
+	>>> range(1, 20, 3)
+	range(1, 20, 3)
+	>>> 
+	>>> 
+	>>> list(range(1, 20, 3))
+	[1, 4, 7, 10, 13, 16, 19]
+	>>> 
+
+func3:GCD function
+	x,y=y,x /*swap变数交换*/
+	応用:Euclidean algorithm
+	Example(最大公约数HCF or GCD):
+		def gcd(x, y):
+	   """This function implements the Euclidian algorithm
+	   to find G.C.D. of two numbers"""
+
+	   while(y):
+	       x, y = y, x % y
+
+	   return x
