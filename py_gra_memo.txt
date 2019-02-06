@@ -1,0 +1,132 @@
+grammar1:Package
+①	A directory must contain a file named "__init__.py" in order for Python to consider it as a package. 
+	Game(Pac)->__init__.py
+			->Sound(Sub_Pac)->__init__.py
+							->load.py/play.py/pause.py/etc..
+			->Image(Sub_Pac)->__init__.py
+							->open.py/change.py/close.py/etc..
+			->Level(Sub_Pac)->__init__.py
+							->start.py/load.py/over.py/etc..
+
+②	Importing module from a package
+	>>import Game.Level.start
+
+	Now if this module contains a function named select_difficulty(), we must use the full name to reference it.
+	>>Game.Level.start.select_difficulty(2)
+
+	If this construct seems lengthy, we can import the module without the package prefix as follows.
+	>>from Game.Level import start
+
+	We can now call the function simply as follows.
+	>>start.select_difficulty(2)
+
+	Yet another way of importing just the required function (or class or variable) form a module within a package would be as follows.
+	>>from Game.Level.start import select_difficulty
+
+	Now we can directly call this function
+	select_difficulty(2)
+
+	※Although easier, this method is not recommended! Using the full "namespace" avoids confusion and prevents two same identifier names from colliding.
+
+grammar2:Type　and Math
+①	While integers can be of any length, a floating point number is accurate only up to 15 decimal places 	(the 16th place is inaccurate)(只能精确到·15·位)
+	Example:
+	a = 5
+
+	# Output: <class 'int'>
+	print(type(a))
+
+	# Output: <class 'float'>
+	print(type(5.0))
+
+	# Output: (8+3j)
+	c = 5 + 3j
+	print(c + 3)
+
+	# Output: True
+	print(isinstance(c, complex))
+
+②	Number system prefix for Python numbers
+	Number System　=> Prefix
+	Binary(2)	=>	'0b' or '0B'
+	Octal(8)	=>	'0o' or '0O'
+	Hexadecimal(16)	=>	'0x' or '0X'
+
+	Example:
+	# Output: 107
+	print(0b1101011)
+
+	# Output: 253 (251 + 2)
+	print(0xFB + 0b10)
+
+	# Output: 13
+	print(0o15)
+
+③	coercion(强制转换):
+	>>> 1 + 2.0
+	3.0
+
+	>>> int(2.3)
+	2
+	>>> int(-2.8)
+	-2
+	>>> float(5)
+	5.0
+	>>> complex('3+5j')
+	(3+5j)
+	※tips:When converting from float to integer, the number gets truncated (integer that is closer to zero).
+
+④	mod(取余) 使商最小
+	print(-7 % 3 ) => 2
+	print(7 % -3) => -2
+	print(-7%-3) => -1
+
+⑤	Python Decimal(十进制)
+	>>> (1.1 + 2.2) == 3.3
+	False
+	↑
+	Reason:	most of the decimal fractions we know, cannot be accurately stored in our computer.
+			We cannot represent the fraction 1/3 as a decimal number. This will give 0.33333333... which is infinitely long, and we can only approximate it.
+
+	>>> 1.1 + 2.2
+	3.3000000000000003
+
+	to carry out decimal calculations,use decimal.Decimal
+	Example:
+	from decimal import Decimal as D
+	# Output: Decimal('3.3')
+	print(D('1.1') + D('2.2'))
+
+	# Output: Decimal('3.000')
+	print(D('1.2') * D('2.50'))
+
+⑥	Python Fractions(分数)
+	Example1:
+	import fractions
+
+	# Output: 3/2
+	print(fractions.Fraction(1.5))
+
+	# Output: 5
+	print(fractions.Fraction(5))
+
+	# Output: 1/3
+	print(fractions.Fraction(1,3))
+
+	Example2:
+	from fractions import Fraction as F
+
+	# Output: 2/3
+	print(F(1,3) + F(1,3))
+
+	# Output: 6/5
+	print(1 / F(5,6))
+
+	# Output: False
+	print(F(-3,10) > 0)
+
+	# Output: True
+	print(F(-3,10) < 0)
+
+⑦	Python Mathematics
+	Python offers modules like math and random to carry out different mathematics like trigonometry(三角函数), logarithms(对数), probability and statistics(概率与统计), etc.

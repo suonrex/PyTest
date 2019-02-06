@@ -50,3 +50,28 @@ func3:GCD function
 	       x, y = y, x % y
 
 	   return x
+	   (最小公倍数LCM):
+	   def lcm(A_x,A_y):
+		lcm = (A_x*A_y) // gcd(A_x,A_y)
+		return lcm
+
+module1:random
+		Example:
+		import random
+
+		# Output: 16(数字随机)
+		print(random.randrange(10,20))
+
+		x = ['a', 'b', 'c', 'd', 'e']
+
+		# Get random choice(list随机)
+		print(random.choice(x))
+
+		# Shuffle x(打乱顺序)
+		random.shuffle(x)
+
+		# Print the shuffled x
+		print(x)
+
+		# Print random element(完全随机)
+		print(random.random())
