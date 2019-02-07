@@ -55,3 +55,57 @@ Q:Sublime Text FileNotFoundError(2, '系统找不到指定的文件。', None, 2
 A:
 SublimeRepl的Settings-User
 { "default_extend_env": {"PATH":"C:\\Program Files (x86)\\Python 3.5"}, }
+
+Note 6:Windows下Python3.6安装Numpy & SciPy
+★Best way:Download IDE below: 
+https://www.anaconda.com/
+
+	Method 1(先执行Note7安装pip):
+	Python添加到环境路径
+	安装命令
+	cd 'python path'
+	python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
+
+	Method 2:
+	numpy
+	进入官网,下载适合的安装包
+	cp36: python3.7
+	win: windows
+	amd64: 64位操作系统
+	example:
+	umpy-1.16.1-cp37-cp37m-win_amd64.whl (11.9 MB)  Copy SHA256 hash SHA256
+
+	进入dos
+	pip install path\numpy-1.14.2-cp36-none-win_amd64.whl
+
+Note 7:Windows install pip
+refer:https://www.liquidweb.com/kb/install-pip-windows/
+	1 Download get-pip.py (same path of python.exe)
+	2 Run get-pip.py as below
+
+Example:
+	C:\Users\ivis>python get-pip.py
+	python: can't open file 'get-pip.py': [Errno 2] No such file or directory
+	
+	C:\Users\ivis>cd C:\Users\ivis\AppData\Local\Programs\Python\Python37-32
+	
+	C:\Users\ivis\AppData\Local\Programs\Python\Python37-32>python get-pip.py
+	Collecting pip
+	  Downloading https://files.pythonhosted.org/packages/46/dc/7fd5df840efb3e56c8b4
+	f768793a237ec4ee59891959d6a215d63f727023/pip-19.0.1-py2.py3-none-any.whl (1.4MB)
+	
+	    100% |████████████████████████████████| 1.4MB 3.8MB/s
+	Collecting wheel
+	  Downloading https://files.pythonhosted.org/packages/ff/47/1dfa4795e24fd6f93d5d
+	58602dd716c3f101cfd5a77cd9acbe519b44a0a9/wheel-0.32.3-py2.py3-none-any.whl
+	Installing collected packages: pip, wheel
+	  Found existing installation: pip 18.1
+	    Uninstalling pip-18.1:
+	      Successfully uninstalled pip-18.1
+	  The script wheel.exe is installed in 'C:\Users\ivis\AppData\Local\Programs\Pyt
+	hon\Python37-32\Scripts' which is not on PATH.
+	  Consider adding this directory to PATH or, if you prefer to suppress this warn
+	ing, use --no-warn-script-location.
+	Successfully installed pip-19.0.1 wheel-0.32.3
+	
+	C:\Users\ivis\AppData\Local\Programs\Python\Python37-32>
