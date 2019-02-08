@@ -75,3 +75,15 @@ module1:random
 
 		# Print random element(完全随机)
 		print(random.random())
+
+Func4 :enumerate() 枚举
+	instru:https://www.programiz.com/python-programming/methods/built-in/enumerate
+	The enumerate() method adds counter to an iterable and returns it (the enumerate object).
+
+	The syntax of enumerate() is:
+	enumerate(iterable, start=0)
+
+	enumerate() Parameters
+	The enumerate() method takes two parameters:
+	iterable - a sequence, an iterator, or objects that supports iteration
+	start (optional) - enumerate() starts counting from this number. If start is omitted, 0 is taken as start.

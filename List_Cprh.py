@@ -40,6 +40,9 @@ print(transposed)
 #Output: [[1, 4], [2, 5], [3, 6]]
 
 # Transpose of a Matrix using List Comprehension
+# **Note: The nested loops in list comprehension don’t work like normal nested loops. 
+# In the program, for i in range(2) is executed before row[i] for row in matrix. 
+# Hence at first, a value is assigned to i then item directed by row[i] is appended in the transpose variable.
 matrix = [[1, 2], [3,4], [5,6], [7,8]]
 transpose = [[row[i] for row in matrix] for i in range(2)]
 print (transpose)
