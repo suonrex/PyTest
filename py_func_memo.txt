@@ -87,3 +87,31 @@ Func4 :enumerate() 枚举
 	The enumerate() method takes two parameters:
 	iterable - a sequence, an iterator, or objects that supports iteration
 	start (optional) - enumerate() starts counting from this number. If start is omitted, 0 is taken as start.
+
+
+Func5: isinstance() issubclass()
+
+Function isinstance() returns True if the object is an instance of the class or other classes derived from it. Each and every class in Python inherits from the base class object.
+Example:
+	>>> isinstance(t,Triangle)
+	True
+
+	>>> isinstance(t,Polygon)
+	True
+
+	>>> isinstance(t,int)
+	False
+
+	>>> isinstance(t,object)
+	True
+
+Similarly, issubclass() is used to check for class inheritance.
+Example:
+	>>> issubclass(Polygon,Triangle)
+	False
+
+	>>> issubclass(Triangle,Polygon)
+	True
+
+	>>> issubclass(bool,int)
+	True

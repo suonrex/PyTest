@@ -342,4 +342,121 @@ In Python, the concept of OOP follows some basic principles:
 
 Example:
 class Parrot:
+	'''This is a docstring. I have created a new class''' # docstring(a brief description) is recommended
     pass
+
+②
+Key Points to Remember:
+The programming gets easy and efficient.
+The class is sharable, so codes can be reused.
+The productivity of programmars increases
+Data is safe and secure with data abstraction.
+
+③ Constructors 
+Class functions that begins with double underscore (__) are called special functions as they have special meaning.
+Of one particular interest is the __init__() function. This special function gets called whenever a new object of that class is instantiated.
+This type of function is also called constructors in Object Oriented Programming (OOP). We normally use it to initialize all the variables.
+
+④　Deleting Attributes and Objects
+Example:
+>> c1 = ComplexNumber(2,3)
+>>> del c1.imag
+>>> c1.getData()
+Traceback (most recent call last):
+...
+AttributeError: 'ComplexNumber' object has no attribute 'imag'
+
+>>> del ComplexNumber.getData
+>>> c1.getData()
+Traceback (most recent call last):
+...
+AttributeError: 'ComplexNumber' object has no attribute 'getData'
+
+>>> c1 = ComplexNumber(1,3)
+>>> del c1
+>>> c1
+Traceback (most recent call last):
+...
+NameError: name 'c1' is not defined
+
+⑤ Python Inheritance Syntax　（derived派生)
+class BaseClass:
+  Body of base class
+class DerivedClass(BaseClass):
+  Body of derived class
+
+⑥ Method Resolution Order in Python(方法解析顺序)
+# MRO of a class can be viewed as the __mro__ attribute or mro() method. The former returns a tuple while latter returns a list.
+>>> MultiDerived.__mro__
+(<class '__main__.MultiDerived'>,
+ <class '__main__.Base1'>,
+ <class '__main__.Base2'>,
+ <class 'object'>)
+
+>>> MultiDerived.mro()
+[<class '__main__.MultiDerived'>,
+ <class '__main__.Base1'>,
+ <class '__main__.Base2'>,
+ <class 'object'>]
+
+⑦　Overloading
+Operator			Expression	Internally
+Addition			p1 + p2		p1.__add__(p2)
+Subtraction			p1 - p2		p1.__sub__(p2)
+Multiplication		p1 * p2		p1.__mul__(p2)
+Power				p1 ** p2	p1.__pow__(p2)
+Division			p1 / p2		p1.__truediv__(p2)
+Floor Division		p1 // p2	p1.__floordiv__(p2)
+Remainder (modulo)	p1 % p2		p1.__mod__(p2)
+Bitwise Left Shift	p1 << p2	p1.__lshift__(p2)
+Bitwise Right Shift	p1 >> p2	p1.__rshift__(p2)
+Bitwise AND			p1 & p2		p1.__and__(p2)
+Bitwise OR			p1 | p2		p1.__or__(p2)
+Bitwise XOR			p1 ^ p2		p1.__xor__(p2)
+Bitwise NOT			~p1			p1.__invert__()
+
+Example '+':
+class Point:
+    def __init__(self, x = 0, y = 0):
+        self.x = x
+        self.y = y
+    def __str__(self):
+    	return "({0},{1})".format(self.x,self.y)
+    # Overloading the + Operator in Python
+    def __add__(self,other):
+    	x=self.x+other.x
+    	y=self.y+other.y
+    	return Point(x,y)
+
+p1=Point(2,3)
+p2=Point(-1,2)
+# output:(1,5)
+print(p1+p2)
+
+
+Comparision Operator Overloading in Python
+Operator					Expression	Internally
+Less than					p1 < p2		p1.__lt__(p2)
+Less than or equal to		p1 <= p2	p1.__le__(p2)
+Equal to 					p1 == p2	p1.__eq__(p2)
+Not equal to				p1 != p2	p1.__ne__(p2)
+Greater than				p1 > p2		p1.__gt__(p2)
+Greater than or equal to	p1 >= p2	p1.__ge__(p2)
+
+GRAMMAR 13: Iterator
+
+GRAMMAR 14: Generator
+①　yield and return
+　The difference is that, while a return statement terminates a function entirely, yield statement pauses the function saving all its states and later continues from there on successive calls.
+②　Differences between Generator function and a Normal function
+・Generator function contains one or more yield statement.
+・When called, it returns an object (iterator) but does not start execution immediately.
+・Methods like __iter__() and __next__() are implemented automatically. So we can iterate through the ・items using next().
+・Once the function yields, the function is paused and the control is transferred to the caller.
+・Local variables and their states are remembered between successive calls.
+・Finally, when the function terminates, StopIteration is raised automatically on further calls.
+③
+Unlike normal functions, the local variables are not destroyed when the function yields. Furthermore, the generator object can be iterated only once.
+
+To restart the process we need to create another generator object using something like a = my_gen().
+Note: One final thing to note is that we can use generators with for loops directly.
