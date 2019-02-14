@@ -80,4 +80,46 @@ except StopIteration :
 
 #using for loop
 for item in (x**2 for x in my_list):
+	print(item)	
+
+# Why generators are used in Python?
+# 1. Easy to Implement
+class PowTwo:
+    def __init__(self, max = 0):
+        self.max = max
+
+    def __iter__(self):
+        self.n = 0
+        return self
+
+    def __next__(self):
+        if self.n > self.max:
+            raise StopIteration
+
+        result = 2 ** self.n
+        self.n += 1
+        return result
+
+def PowTwoGen(max = 0):
+    n = 0
+    while n <= max:
+        yield 2 ** n
+        n += 1
+
+for item in PowTwo(3):
 	print(item)
+
+for item in PowTwoGen(3):
+	print(item)
+
+# 3.Represent Infinite Stream
+def all_even():
+    n = 0
+    while True:
+        yield n
+        n += 2
+for ev_no in all_even():
+	if ev_no > 10:
+		break
+	else:
+		print(ev_no)

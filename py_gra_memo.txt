@@ -460,3 +460,63 @@ Unlike normal functions, the local variables are not destroyed when the function
 
 To restart the process we need to create another generator object using something like a = my_gen().
 Note: One final thing to note is that we can use generators with for loops directly.
+
+④　Why generators are used in Python?
+1. Easy to Implement
+Generators can be implemented in a clear and concise way as compared to their iterator class counterpart. Since, generators keep track of details automatically, it was concise and much cleaner in implementation.
+2. Memory Efficient
+A normal function to return a sequence will create the entire sequence in memory before returning the result. This is an overkill if the number of items in the sequence is very large.
+
+Generator implementation of such sequence is memory friendly and is preferred since it only produces one item at a time.
+3. Represent Infinite Stream
+Generators are excellent medium to represent an infinite stream of data. Infinite streams cannot be stored in memory and since generators produce only one item at a time, it can represent infinite stream of data.
+4. Pipelining Generators
+Example:
+	with open('sells.log') as file:
+	    pizza_col = (line[3] for line in file)
+	    per_hour = (int(x) for x in pizza_col if x != 'N/A')
+	    print("Total pizzas sold = ",sum(per_hour))
+
+GRAMMAR 15: Closures(闭包)
+※When do we have a closure?
+・We must have a nested function (function inside a function).
+・The nested function must refer to a value defined in the enclosing function.
+・The enclosing function must return the nested function.
+
+※When to use closures?
+Closures can avoid the use of global values and provides some form of data hiding. It can also provide an object oriented solution to the problem.
+
+When there are few methods (one method in most cases) to be implemented in a class, closures can provide an alternate and more elegant solutions. But when the number of attributes and methods get larger, better implement a class.
+
+# find the enclosed value
+On a concluding note, it is good to point out that the values that get enclosed in the closure function can be found out.
+All function objects have a __closure__ attribute that returns a tuple of cell objects if it is a closure function. Referring to the example above, we know times3 and times5 are closure functions.
+
+Example:
+>>> make_multiplier_of.__closure__
+>>> times3.__closure__
+(<cell at 0x0000000002D155B8: int object at 0x000000001E39B6E0>,)
+# The cell object has the attribute cell_contents which stores the closed value.
+>>> times3.__closure__[0].cell_contents
+3
+>>> times5.__closure__[0].cell_contents
+5
+
+GRAMMAR 16:Decorator(装饰器)
+refer to->https://foofish.net/python-decorator.html
+		  https://www.programiz.com/python-programming/decorator
+Python has an interesting feature called decorators to add functionality to an existing code.
+
+This is also called metaprogramming（元编程） as a part of the program tries to modify another part of the program at compile time.
+Example:
+@make_pretty #@(语法糖)
+def ordinary(): 
+    print("I am ordinary")
+
+#is equivalent to
+
+def ordinary():
+    print("I am ordinary")
+ordinary = make_pretty(ordinary) 
+
+※functools.wraps在3.7貌似不需要了 参考Decorator
