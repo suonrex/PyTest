@@ -513,10 +513,44 @@ Example:
 def ordinary(): 
     print("I am ordinary")
 
-#is equivalent to
+//is equivalent to
 
 def ordinary():
     print("I am ordinary")
 ordinary = make_pretty(ordinary) 
 
 ※functools.wraps在3.7貌似不需要了 参考Decorator
+
+GRAMMAR 17:@property
+refer to : @property.py
+https://www.programiz.com/python-programming/property
+
+1 Using Getters and Setters
+An obvious solution to the above constraint will be to hide the attribute temperature (make it private) and define new getter and setter interfaces to manipulate it. 
+"temperature" was replaced with "_temperature"
+Finally note that, the actual temperature value is stored in the private variable _temperature. The attribute temperature is a property object which provides interface to this private variable.
+
+GRAMMAR 18:Shallow Copy and Deep Copy
+1 Copy an Object 
+In Python, we use = operator to create a copy of an object. You may think that this creates a new object; it doesn't. It only creates a new variable that shares the reference of the original object.
+(用=只是创造一个复制变量，地址一样)
+
+2 import copy
+  copy() -> shallow copy(浅复制 到list)
+  deepcopy() -> deep copy(深复制 到list当中元素的地址)
+
+
+GRAMMAR 18:Assertion(断言)
+Syntax:
+	# condition should alwasys be true! If the condition is false assert halts the program and gives an AssertionError.
+	assert <condition> 
+	assert <condition>,<error message>
+
+1 assert statement has a condition and if the condition is not satisfied the program will stop and give AssertionError.
+2 assert statement can also have a condition and a optional error message. If the condition is not satisfied assert stops the program and gives AssertionError along with the error message.
+
+Key Points to Remember
+・Assertions are the condition or boolean expression which are always supposed to be true in the code.
+・Assert statement takes an expression and optional message.
+・Assert statement is used to check types, values of argument and the output of the function.
+・Assert statement is used as debugging tool as it halts the program at the point where an error occurs.

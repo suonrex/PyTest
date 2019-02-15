@@ -115,3 +115,26 @@ Example:
 
 	>>> issubclass(bool,int)
 	True
+
+
+
+Func6: property(fget=None, fset=None, fdel=None, doc=None)
+In Python, property() is a built-in function that creates and returns a property object. The signature of this function is:
+		property(fget=None, fset=None, fdel=None, doc=None)
+
+		fget : function to get value of the attribute
+		fset : function to set value of the attribute
+		fdel : function to delete the attribute
+		doc : a string (like a comment)
+
+Example:
+		temperature = property(get_temperature,set_temperature)
+
+		is equivalent to↓
+
+		# make empty property
+		temperature = property()
+		# assign fget
+		temperature = temperature.getter(get_temperature)
+		# assign fset
+		temperature = temperature.setter(set_temperature)

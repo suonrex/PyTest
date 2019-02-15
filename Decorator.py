@@ -86,6 +86,7 @@ import logging
 
 
 def use_logging(level):
+
     def decorator(func):
         def wrapper(*args, **kwargs):
             if level == "warn":
