@@ -535,7 +535,7 @@ GRAMMAR 18:Shallow Copy and Deep Copy
 In Python, we use = operator to create a copy of an object. You may think that this creates a new object; it doesn't. It only creates a new variable that shares the reference of the original object.
 (用=只是创造一个复制变量，地址一样)
 
-2 import copy
+2 import Copy
   copy() -> shallow copy(浅复制 到list)
   deepcopy() -> deep copy(深复制 到list当中元素的地址)
 
@@ -554,3 +554,105 @@ Key Points to Remember
 ・Assert statement takes an expression and optional message.
 ・Assert statement is used to check types, values of argument and the output of the function.
 ・Assert statement is used as debugging tool as it halts the program at the point where an error occurs.
+
+Grammar 19:RegEx
+
+	[] - Square brackets
+	Square brackets specifies a set of characters you wish to match.
+
+	. - Period
+	A period matches any "single" character (except newline '\n').
+
+	^ - Caret(插入符)
+	The caret symbol ^ is used to check if a string "starts with" a certain character.
+
+	$ - Dollar
+	The dollar symbol $ is used to check if a string "ends with" a certain character.
+
+	* - Star
+	The star symbol * matches "zero" or "more" occurrences ofthe pattern left to it.
+
+	+ - Plus
+	The plus symbol * matches "one" or "more" occurrences of the pattern left to it.
+	Example:
+		ma+n 	maaan 1 match
+				main  No match (a is not followed by n)
+
+	? - Question Mark
+	The question mark symbol ? matches "zero" or "one" occurrence of the pattern left to it.
+	Example:
+		ma?n 	mn   	1 match
+				maaan	No match (more than one a character)
+				main  	No match (a is not followed by n)
+				woman 	1 match
+
+	{} - Braces
+	Consider this code: {n,m}. This means "at least n", and "at most" m repetitions of the pattern "left" to it.
+	Example:
+		a{2,3} 	abc dat 	No match
+				abc daat 	1 match (at daat)
+
+		[0-9]{2,4} 	ab123csde 		1 match (match at ab123csde)
+					12 and 345673 	2 matches (at 12 and 345673)
+					1 and 2 		No match
+
+	| - Alternation
+	Vertical bar | is used for alternation (or operator).
+	Example:
+		a|b 	cde 	No match
+				ade 	1 match (match at ade)
+				acdbea 	3 matches (at acdbea)
+
+	() - Group
+	Parentheses () is used to group sub-patterns. For example, (a|b|c)xz match any string that matches either a or b or c followed by xz
+	Example:
+		(a|b|c)xz 	ab xz 		No match
+					abxz 		1 match (match at abxz)
+					axz cabxz 	2 matches (at axzbc cabxz)
+
+	\ - Backslash
+	Backlash \ is used to escape various characters including all metacharacters.
+
+
+	Special Sequences
+	\A - Matches if the specified characters are at the "start" of a string.
+	Expression	String	Matched?
+	\Athe	the sun	Match
+			In the sun	No match
+
+	\b - Matches if the specified characters are at the "beginning" or "end" of a word.
+	Expression	String	Matched?
+	\bfoo	football	Match
+			a football	Match
+			afootball	No match
+	foo\b	the foo			Match
+			the afoo test	Match
+			the afootest	No match
+	\B - Opposite of \b. Matches if the specified characters are "not" at the beginning or end of a word.
+
+	\d - Matches any "decimal digit". Equivalent to [0-9]
+	Expression	String	Matched?
+	\d	12abc3	3 matches (at 12abc3)
+		Python	No match
+
+	\D - Matches any non-decimal digit. Equivalent to [^0-9]
+
+	\s - Matches where a string contains any "whitespace" character. Equivalent to [ \t\n\r\f\v].
+	Expression	String	Matched?
+	\s	Python RegEx	1 match
+		PythonRegEx		No match
+
+	\S - Matches where a string contains any "non-whitespace" character. Equivalent to [^ \t\n\r\f\v].
+
+	\w - Matches any alphanumeric character (digits and alphabets). Equivalent to "[a-zA-Z0-9_]". By the way, "underscore _" is also considered an alphanumeric character.
+	Expression	String	Matched?
+	\w	12&": ;c	3 matches (at 12&": ;c)
+		%"> !		No match
+
+	\W - Matches any non-alphanumeric character. Equivalent to "[^a-zA-Z0-9_]"
+
+	\Z - Matches if the specified characters are at the "end" of a string.
+	Expression	String	Matched?
+	\ZPython	I like Python	1 match
+				I like Python.	No match
+				Python is fun.	No match

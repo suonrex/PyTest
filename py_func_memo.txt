@@ -138,3 +138,5 @@ Example:
 		temperature = temperature.getter(get_temperature)
 		# assign fset
 		temperature = temperature.setter(set_temperature)
+
+Module2: re(RegEx正规表达)
